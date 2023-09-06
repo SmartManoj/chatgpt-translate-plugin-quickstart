@@ -1,34 +1,18 @@
 import json
-
 import quart
 import quart_cors
 from quart import request
-
+from api import translate
 app = quart_cors.cors(quart.Quart(__name__), allow_origin="https://chat.openai.com")
 
-# Keep track of todo's. Does not persist if Python session is restarted.
-_TODOS = {}
 
-@app.post("/todos/<string:username>")
-async def add_todo(username):
-    request = await quart.request.get_json(force=True)
-    if username not in _TODOS:
-        _TODOS[username] = []
-    _TODOS[username].append(request["todo"])
-    return quart.Response(response='OK', status=200)
+@app.route('/translate', methods=['POST'])
+async def translate_route():
+    data = await request.get_json(force=True)
+    text_to_translate = data.get('text')
+    translation = translate(text_to_translate)
+    return json.dumps({'translated_text': translation})
 
-@app.get("/todos/<string:username>")
-async def get_todos(username):
-    return quart.Response(response=json.dumps(_TODOS.get(username, [])), status=200)
-
-@app.delete("/todos/<string:username>")
-async def delete_todo(username):
-    request = await quart.request.get_json(force=True)
-    todo_idx = request["todo_idx"]
-    # fail silently, it's a simple plugin
-    if 0 <= todo_idx < len(_TODOS[username]):
-        _TODOS[username].pop(todo_idx)
-    return quart.Response(response='OK', status=200)
 
 @app.get("/logo.png")
 async def plugin_logo():
@@ -48,9 +32,6 @@ async def openapi_spec():
     with open("openapi.yaml") as f:
         text = f.read()
         return quart.Response(text, mimetype="text/yaml")
-
-def main():
-    app.run(debug=True, host="0.0.0.0", port=5003)
-
+    
 if __name__ == "__main__":
-    main()
+    app.run(debug=True, host="0.0.0.0", port=5003)
