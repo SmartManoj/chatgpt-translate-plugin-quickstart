@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Run code",
+  "name_for_model": "run_code",
+  "description_for_human": "A plugin that runs code",
+  "description_for_model": "A plugin that runs code",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+      "url": "https://e9a9-103-154-35-159.ngrok-free.app/openapi.yaml"
+  },
+  "logo_url": "https://e9a9-103-154-35-159.ngrok-free.app/logo.png",
+  "contact_email": "me@smarrtmanoj.com",
+  "legal_info_url": "http://example.com/legal"
+}

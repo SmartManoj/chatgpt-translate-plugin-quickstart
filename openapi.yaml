@@ -1,0 +1,32 @@
+openapi: 3.0.1
+info:
+  title: Translation Plugin API
+  description: A plugin that allows the user to translate text using ChatGPT. If you do not know the user's username, ask them first before making queries to the plugin. Otherwise, use the username "global".
+  version: 'v1'
+servers:
+  - url: https://e9a9-103-154-35-159.ngrok-free.app
+paths:
+  /run_code:
+    post:
+      operationId: run_code
+      summary: Run code
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunCodeRequest'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    RunCodeRequest:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          description: The code to run.
+          required: true
