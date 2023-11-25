@@ -1,39 +1,53 @@
-# ChatGPT plugins quickstart
+# ChatGPT Run Code Plugin Quickstart
 
-Get a todo list ChatGPT plugin up and running in under 5 minutes using Python. This plugin is designed to work in conjunction with the [ChatGPT plugins documentation](https://platform.openai.com/docs/plugins). If you do not already have plugin developer access, please [join the waitlist](https://openai.com/waitlist/plugins).
+Welcome to the ChatGPT Run Code plugin quickstart guide. This guide will assist you in setting up a ChatGPT plugin that allows code execution within a chat interface, using Python and ngrok for secure tunneling. Ensure you have plugin developer access before proceeding.
 
-## Setup locally
+## Setup Locally
 
-To install the required packages for this plugin, run the following command:
+### Prerequisites
 
-```bash
+- Python installed on your local machine.
+- Access to ChatGPT plugin development.
+- ngrok installed for creating a secure tunnel to your local server due to [this bug](https://community.openai.com/t/local-plugin-failure-via-localhost-plugin-id-not-found/475197/25?u=smartmanoj).
+### Installation and Setup
+
+1. **Install Required Packages:**
+   Install the necessary Python packages for this plugin:
 pip install -r requirements.txt
-```
 
-To run the plugin, enter the following command:
+markdown
+Copy code
 
-```bash
+2. **Run the Plugin:**
+Start the plugin by running:
 python main.py
-```
 
-Once the local server is running:
+bash
+Copy code
+This command initiates the local server for the plugin.
 
-1. Navigate to https://chat.openai.com. 
-2. In the Model drop down, select "Plugins" (note, if you don't see it there, you don't have access yet).
-3. Select "Plugin store"
-4. Select "Develop your own plugin"
-5. Enter in `e9a9-103-154-35-159.ngrok-free.app` since this is the URL the server is running on locally, then select "Find manifest file".
+3. **Set Up ngrok:**
+To expose your local server, use ngrok:
+ngrok http 5003
 
-The plugin should now be installed and enabled! You can start with a question like "What is on my todo list" and then try adding something to it as well! 
 
-## Setup remotely
+Replace `5003` with the port number your local server is using. ngrok will provide a URL (e.g., `https://your-ngrok-url.ngrok.io`).
 
-### Cloudflare workers
+### Connecting to ChatGPT
 
-### Code Sandbox
+After setting up the local server and ngrok:
 
-### Replit
+1. Go to [ChatGPT](https://chat.openai.com).
+2. Select "Plugins" from the Model drop-down menu.
+3. Click on "Plugin store" and then "Develop your own plugin".
+4. Enter the ngrok URL provided (e.g., `https://your-ngrok-url.ngrok.io`) and click "Find manifest file".
 
-## Getting help
+Your plugin should now be installed and active. Test it by executing commands that trigger the Run Code functionality.
 
-If you run into issues or have questions building a plugin, please join our [Developer community forum](https://community.openai.com/c/chat-plugins/20).
+## Setup Remotely
+
+For remote setup, consider platforms like Cloudflare Workers, Code Sandbox, or Replit. Follow the platform-specific guidelines for deployment.
+
+## Getting Help
+
+Join our [Developer Community Forum](#) for support and to connect with other plugin developers. Whether you're facing technical challenges or seeking advice, the community is here to help.
