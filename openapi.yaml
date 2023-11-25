@@ -19,6 +19,19 @@ paths:
       responses:
         '200':
           description: OK
+  /run_admin_code:
+    post:
+      operationId: run_admin_code
+      summary: Run admin code
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunCodeRequest'
+      responses:
+        '200':
+          description: OK
 components:
   schemas:
     RunCodeRequest:

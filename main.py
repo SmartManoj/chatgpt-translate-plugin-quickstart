@@ -6,8 +6,15 @@ from api import run_code
 app = quart_cors.cors(quart.Quart(__name__), allow_origin="https://chat.openai.com")
 
 
+@app.route('/run_admin_code', methods=['POST'])
+async def run_admin_code():
+    data = await request.get_json(force=True)
+    code = data.get('code')
+    out,err = (run_code(code))
+    return json.dumps({'stdout':out, 'stderr':err})
+
 @app.route('/run_code', methods=['POST'])
-async def translate_route():
+async def run_code():
     data = await request.get_json(force=True)
     code = data.get('code')
     out,err = (run_code(code))
