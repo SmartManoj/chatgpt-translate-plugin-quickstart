@@ -2,16 +2,16 @@ import json
 import quart
 import quart_cors
 from quart import request
-from api import translate
+from api import talk
 app = quart_cors.cors(quart.Quart(__name__), allow_origin="https://chat.openai.com")
 
 
-@app.route('/translate', methods=['POST'])
-async def translate_route():
+@app.route('/talk', methods=['POST'])
+async def talk_route():
     data = await request.get_json(force=True)
-    text_to_translate = data.get('text')
-    translation = translate(text_to_translate)
-    return json.dumps({'translated_text': translation})
+    text_to_talk = data.get('text')
+    response = talk(text_to_talk)
+    return json.dumps({'response': response})
 
 
 @app.get("/logo.png")

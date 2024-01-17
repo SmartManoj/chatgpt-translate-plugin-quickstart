@@ -1,6 +1,6 @@
-main branch - translate plugin
-master branch - code interpreter plugin
+Talk to LLM
 
+https://chat.openai.com/share/7033826b-5e0d-4bf1-bcbd-95552de64bb7
 
 # ChatGPT plugins quickstart
 
@@ -26,7 +26,7 @@ Once the local server is running:
 2. In the Model drop down, select "Plugins" (note, if you don't see it there, you don't have access yet).
 3. Select "Plugin store"
 4. Select "Develop your own plugin"
-5. Enter in `localhost:5003` since this is the URL the server is running on locally, then select "Find manifest file".
+5. Enter in `f9ab-103-171-129-48.ngrok-free.app` since this is the URL the server is running on locally, then select "Find manifest file".
 
 The plugin should now be installed and enabled! You can start with a question like "What is on my todo list" and then try adding something to it as well! 
 

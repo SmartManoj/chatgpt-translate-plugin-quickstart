@@ -1,17 +1,17 @@
 {
   "schema_version": "v1",
-  "name_for_human": "Translation Plugin (no auth)",
-  "name_for_model": "translate",
-  "description_for_human": "A plugin that translates text from one language to another.",
-  "description_for_model": "A plugin that translates text from one language to another.",
+  "name_for_human": "Talk to LLM",
+  "name_for_model": "talk_to_llm",
+  "description_for_human": "A plugin to talk to LLM",
+  "description_for_model": "A plugin to talk to LLM",
   "auth": {
     "type": "none"
   },
   "api": {
     "type": "openapi",
-      "url": "http://localhost:5003/openapi.yaml"
+      "url": "https://f9ab-103-171-129-48.ngrok-free.app/openapi.yaml"
   },
-  "logo_url": "http://localhost:5003/logo.png",
+  "logo_url": "https://f9ab-103-171-129-48.ngrok-free.app/logo.png",
   "contact_email": "me@smarrtmanoj.com",
   "legal_info_url": "http://example.com/legal"
 }

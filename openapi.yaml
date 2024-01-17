@@ -1,32 +1,32 @@
 openapi: 3.0.1
 info:
-  title: Translation Plugin API
-  description: A plugin that allows the user to translate text using ChatGPT. If you do not know the user's username, ask them first before making queries to the plugin. Otherwise, use the username "global".
+  title: Talk to LLM
+  description: A plugin that allows the user to talk to LLM
   version: 'v1'
 servers:
-  - url: http://localhost:5003
+  - url: https://f9ab-103-171-129-48.ngrok-free.app
 paths:
-  /translate:
+  /talk:
     post:
-      operationId: translate
-      summary: Translate text
+      operationId: talk
+      summary: Talk to LLM
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TranslateRequest'
+              $ref: '#/components/schemas/TalkRequest'
       responses:
         '200':
-          description: Translation successful
+          description: Talking successful
 components:
   schemas:
-    TranslateRequest:
+    TalkRequest:
       type: object
       required:
         - text
       properties:
         text:
           type: string
-          description: Text to translate
+          description: Text to talk
           required: true
